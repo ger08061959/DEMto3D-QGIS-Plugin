@@ -20,16 +20,18 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt4.QtGui import QAction, QIcon, QMessageBox
+from __future__ import absolute_import
+from builtins import object
+from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
+from PyQt5.QtGui import QAction, QIcon, QMessageBox
 # Initialize Qt resources from file resources.py
-import resources_rc
+from . import resources_rc
 # Import the code for the dialog
-from DEMto3D_Dialog import DEMto3D_dialog
+from .DEMto3D_Dialog import DEMto3D_dialog
 import os.path
 
 
-class DEMto3D:
+class DEMto3D(object):
     """QGIS Plugin Implementation."""
 
     def __init__(self, iface):
@@ -98,11 +100,11 @@ class DEMto3D:
         self.iface.removeRasterToolBarIcon(self.action)
 
     def run(self):
-        layers = self.iface.legendInterface().layers()
+        layers = self.iface.layerTreeView().selectedLayers()
         raster = False
         if layers:
             for layer in layers:
-                if layer.type() == 1 and self.iface.legendInterface().isLayerVisible(layer):
+                if layer.type() == 1:
                     raster = True
                     break
             if raster and self.window:

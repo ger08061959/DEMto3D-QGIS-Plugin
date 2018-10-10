@@ -20,12 +20,13 @@
  *                                                                         *
  ***************************************************************************/
 """
+from __future__ import absolute_import
 
-from PyQt4 import QtCore
-from PyQt4 import QtGui
-from PyQt4.QtCore import Qt
-from PyQt4.QtGui import QDialog
-from SelectLayer_dialog_base import Ui_SelectLayer_dialog_base
+from qgis.PyQt import QtCore
+from qgis.PyQt import QtGui
+from qgis.PyQt.QtCore import Qt
+from qgis.PyQt.QtWidgets import QDialog, QListWidgetItem
+from .SelectLayer_dialog_base import Ui_SelectLayer_dialog_base
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -42,12 +43,12 @@ class Dialog(QDialog, Ui_SelectLayer_dialog_base):
 
         self.ui.LayerList.clear()
         for layer in layers:
-            item = QtGui.QListWidgetItem()
+            item = QListWidgetItem()
             item.setText(layer.name())
             self.ui.LayerList.addItem(item)
 
-        QtCore.QObject.connect(self.ui.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), self.accept)
-        QtCore.QObject.connect(self.ui.buttonBox, QtCore.SIGNAL(_fromUtf8("rejected()")), self.reject)
+        self.ui.buttonBox.accepted.connect(self.accept)
+        self.ui.buttonBox.rejected.connect(self.reject)
 
     def get_layer(self):
         try:

@@ -6,9 +6,12 @@
  Creación de mapas en 3D
                               -------------------
         begin                : 2015-03-17
+        modified             : 2018-10-09
         git sha              : $Format:%H$
         copyright            : (C) 2015 by Francisco Javier Venceslá Simón
-        email                : jawensi@gmail.com
+        email                : demto3d@gmail.com
+        modifications        : Ger Groeneveld, Qt >=5.10 and Python >= 3.6
+        email                : gergroeneveld@gmail.com
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,10 +23,12 @@
  *                                                                         *
  ***************************************************************************/
 """
+from builtins import str
+from builtins import range
 import collections
 
-from PyQt4 import QtCore
-from PyQt4.QtCore import QThread
+from qgis.PyQt import QtCore
+from qgis.PyQt.QtCore import QThread
 import math
 
 try:
@@ -49,9 +54,10 @@ class STL(QThread):
         self.matrix_dem = dem_matrix
 
         self.quit = False
-        QtCore.QObject.connect(self.button, QtCore.SIGNAL(_fromUtf8("clicked()")), self.cancel)
+        self.button.clicked.connect(self.cancel)
 
     def run(self):
+        print('STL filename: ',self.stl_file)
         f = open(self.stl_file, "w")
         f.write("solid model\n")
 

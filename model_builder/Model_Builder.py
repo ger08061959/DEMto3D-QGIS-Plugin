@@ -6,9 +6,12 @@
  Creación de mapas en 3D
                               -------------------
         begin                : 2015-03-17
+        modified             : 2018-10-09
         git sha              : $Format:%H$
         copyright            : (C) 2015 by Francisco Javier Venceslá Simón
-        email                : jawensi@gmail.com
+        email                : demto3d@gmail.com
+        modifications        : Ger Groeneveld, Qt >=5.10 and Python >= 3.6
+        email                : gergroeneveld@gmail.com
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,12 +23,13 @@
  *                                                                         *
  ***************************************************************************/
 """
-from PyQt4 import QtCore
+from builtins import range
+from qgis.PyQt import QtCore
 import collections
 import copy
 
-from PyQt4.QtCore import QThread
-from PyQt4.QtGui import QApplication
+from qgis.PyQt.QtCore import QThread
+from qgis.PyQt.QtWidgets import QApplication
 from qgis._core import QgsPoint, QgsCoordinateTransform
 import math
 from osgeo import gdal
@@ -52,7 +56,7 @@ class Model(QThread):
         self.matrix_dem = []
 
         self.quit = False
-        QtCore.QObject.connect(self.button, QtCore.SIGNAL(_fromUtf8("clicked()")), self.cancel)
+        self.button.clicked.connect(self.cancel)
 
     def run(self):
         row_stl = int(math.ceil(self.parameters["height"] / self.parameters["spacing_mm"]) + 1)
@@ -87,7 +91,7 @@ class Model(QThread):
 
         row_stl = int(math.ceil(height / spacing_mm) + 1)
         col_stl = int(math.ceil(width / spacing_mm) + 1)
-        matrix_dem = [range(col_stl) for i in range(row_stl)]
+        matrix_dem = [list(range(col_stl)) for i in range(row_stl)]
 
         var_y = height
         for i in range(row_stl):
