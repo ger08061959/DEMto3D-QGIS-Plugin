@@ -30,3 +30,10 @@ of the Master Degree in Cartography and Geodesy of the University of Jaén
 Developed by: Francisco Javier Venceslá Simón
 
 Contact: demto3d@gmail.com
+------------------------------
+
+Update for QGIS Version 3.0
+
+Modifications by: Ger Groeneveld
+
+Contact: gergroeneveld@gmail.com or gergroeneveld@vision-energy-group.com
