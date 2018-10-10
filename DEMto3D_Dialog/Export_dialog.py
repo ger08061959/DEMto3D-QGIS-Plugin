@@ -6,9 +6,12 @@
  Impresión 3D de MDE
                               -------------------
         begin                : 2015-08-02
+        modified             : 2018-10-09
         git sha              : $Format:%H$
         copyright            : (C) 2015 by Francisco Javier Venceslá Simón
         email                : demto3d@gmail.com
+        modifications        : Ger Groeneveld, Qt >=5.10 and Python >= 3.6
+        email                : gergroeneveld@gmail.com
  ***************************************************************************/
 
 /***************************************************************************
@@ -20,13 +23,14 @@
  *                                                                         *
  ***************************************************************************/
 """
+from __future__ import absolute_import
 import os
 
-from PyQt4 import QtCore
-from PyQt4.QtCore import Qt, SIGNAL
-from PyQt4.QtGui import QDialog
+from PyQt5 import QtCore
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import QDialog
 
-from Export_dialog_base import Ui_ExportDialogBase
+from .Export_dialog_base import Ui_ExportDialogBase
 from ..model_builder.Model_Builder import Model
 from ..model_builder.STL_Builder import STL
 
@@ -40,13 +44,15 @@ class Dialog(QDialog, Ui_ExportDialogBase):
         self.parameters = parameters
 
         self.stl_file = file_name
+
         self.do_model()
 
     def do_model(self):
         self.ui.ProgressLabel.setText(self.tr("Building STL geometry ..."))
+        self.ui.progressBar.setValue(0)
         self.Model = Model(self.ui.progressBar, self.ui.ProgressLabel, self.ui.cancelButton, self.parameters)
         self.Model.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
-        QtCore.QObject.connect(self.Model, SIGNAL("finished()"), self.do_stl_model)
+        self.Model.finished.connect(self.do_stl_model)
         self.Model.start()
 
     def do_stl_model(self):
@@ -54,11 +60,12 @@ class Dialog(QDialog, Ui_ExportDialogBase):
             self.reject()
         else:
             self.ui.ProgressLabel.setText(self.tr("Creating STL file ..."))
+            self.ui.progressBar.setValue(0)
             dem_matrix = self.Model.get_model()
             self.STL = STL(self.ui.progressBar, self.ui.ProgressLabel, self.ui.cancelButton, self.parameters,
                            self.stl_file, dem_matrix)
             self.STL.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
-            QtCore.QObject.connect(self.STL, SIGNAL("finished()"), self.finish_model)
+            self.STL.finished.connect(self.finish_model)
             self.STL.start()
 
     def finish_model(self):
