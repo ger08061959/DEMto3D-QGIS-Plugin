@@ -157,6 +157,8 @@ class STL(QThread):
         return vector_face
 
     def face_dem_vector(self, matrix_dem):
+        print(matrix_dem)
+
         rows = matrix_dem.__len__()
         cols = matrix_dem[0].__len__()
         vector_face = []
