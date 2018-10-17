@@ -89,7 +89,7 @@ class DEMto3D(object):
         self.action = QAction(icon, text, parent)
         self.action.setObjectName(text)
         self.action.setStatusTip(text)
-        self.action.triggered().connect(self.run)
+        self.action.triggered.connect(self.run)
 
         self.iface.addRasterToolBarIcon(self.action)
         self.iface.addPluginToRasterMenu(self.menu, self.action)
