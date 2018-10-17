@@ -13,11 +13,14 @@ class Ui_SelectLayer_dialog_base(object):
     def setupUi(self, SelectLayer_dialog_base):
         SelectLayer_dialog_base.setObjectName("SelectLayer_dialog_base")
         SelectLayer_dialog_base.resize(227, 144)
+
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/plugins/DEMto3D/icons/demto3d.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap(":/demto3d.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         SelectLayer_dialog_base.setWindowIcon(icon)
+
         self.verticalLayout = QtWidgets.QVBoxLayout(SelectLayer_dialog_base)
         self.verticalLayout.setObjectName("verticalLayout")
+
         self.label = QtWidgets.QLabel(SelectLayer_dialog_base)
         self.label.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.label.setObjectName("label")
