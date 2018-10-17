@@ -50,7 +50,7 @@ class Dialog(QDialog, Ui_ExportDialogBase):
         self.ui.progressBar.setValue(0)
         self.Model = Model(self.ui.progressBar, self.ui.ProgressLabel, self.ui.cancelButton, self.parameters)
         self.Model.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
-        self.Model.finished().connect(self.do_stl_model)
+        self.Model.finished.connect(self.do_stl_model)
         self.Model.start()
 
     def do_stl_model(self):
