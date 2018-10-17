@@ -94,7 +94,7 @@ class Model(QThread):
 
         var_y = height
         for i in range(row_stl):
-            self.updateProgress.emit()
+            # self.updateProgress.emit()
             QApplication.processEvents()
             var_x = 0
             for j in range(col_stl):
