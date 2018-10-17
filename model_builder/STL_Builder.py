@@ -49,8 +49,6 @@ class STL(QThread):
         self.quit = False
         self.button.clicked.connect(self.cancel)
 
-        self.updateProgress.connect(self.emit)
-
     def run(self):
         print('STL filename: ',self.stl_file)
         f = open(self.stl_file, "w")
