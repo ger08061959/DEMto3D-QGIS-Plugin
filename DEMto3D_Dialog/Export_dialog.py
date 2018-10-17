@@ -26,9 +26,7 @@
 from __future__ import absolute_import
 import os
 
-from PyQt5 import QtCore
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QDialog
+from PyQt5.QtWidgets import QDialog
 
 from .Export_dialog_base import Ui_ExportDialogBase
 from ..model_builder.Model_Builder import Model
@@ -41,6 +39,7 @@ class Dialog(QDialog, Ui_ExportDialogBase):
         QDialog.__init__(self)
         self.ui = Ui_ExportDialogBase()
         self.ui.setupUi(self)
+        self.ui.progressBarConnect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
         self.parameters = parameters
 
         self.stl_file = file_name
@@ -51,8 +50,8 @@ class Dialog(QDialog, Ui_ExportDialogBase):
         self.ui.ProgressLabel.setText(self.tr("Building STL geometry ..."))
         self.ui.progressBar.setValue(0)
         self.Model = Model(self.ui.progressBar, self.ui.ProgressLabel, self.ui.cancelButton, self.parameters)
-        self.Model.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
-        self.Model.finished.connect(self.do_stl_model)
+        # self.Model.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
+        self.Model.finished().connect(self.do_stl_model)
         self.Model.start()
 
     def do_stl_model(self):
@@ -64,8 +63,8 @@ class Dialog(QDialog, Ui_ExportDialogBase):
             dem_matrix = self.Model.get_model()
             self.STL = STL(self.ui.progressBar, self.ui.ProgressLabel, self.ui.cancelButton, self.parameters,
                            self.stl_file, dem_matrix)
-            self.STL.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
-            self.STL.finished.connect(self.finish_model)
+            # self.STL.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
+            self.STL.finished().connect(self.finish_model)
             self.STL.start()
 
     def finish_model(self):

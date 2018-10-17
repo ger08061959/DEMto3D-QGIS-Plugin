@@ -7,6 +7,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import pyqtSlot
 
 
 class Ui_ExportDialogBase(object):
@@ -41,3 +42,10 @@ class Ui_ExportDialogBase(object):
         _translate = QtCore.QCoreApplication.translate
         ExportDialogBase.setWindowTitle(_translate("ExportDialogBase", "DEMto3D"))
         self.cancelButton.setText(_translate("ExportDialogBase", "Cancel"))
+
+    def progressBarConnect(self, progressBar):
+        progressBar.changedValue.connect(self.getProgressBarValue)
+
+    @pyqtSlot(int)
+    def getProgressBarValue(self, val):
+        self.progressBar.setValue(val)

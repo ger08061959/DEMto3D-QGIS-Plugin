@@ -24,11 +24,10 @@
  ***************************************************************************/
 """
 from builtins import range
-from qgis.PyQt import QtCore
 import collections
 import copy
 
-from qgis.PyQt.QtCore import QThread
+from qgis.PyQt.QtCore import QThread, pyqtSignal
 from qgis.PyQt.QtWidgets import QApplication
 from qgis.core import QgsPoint, QgsCoordinateTransform
 import math
@@ -39,7 +38,7 @@ import struct
 class Model(QThread):
     """Class where is built the mesh point that describe the surface model """
     pto = collections.namedtuple('pto', 'x y z')
-    updateProgress = QtCore.pyqtSignal()
+    updateProgress = pyqtSignal(int)
 
     def __init__(self, bar, label, button, parameters):
         QThread.__init__(self)
