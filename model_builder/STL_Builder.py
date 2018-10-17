@@ -161,6 +161,8 @@ class STL(QThread):
         cols = matrix_dem[0].__len__()
         vector_face = []
 
+        print("rows,cols :("+str(rows)+","+str(cols))
+
         for j in range(rows - 1):
             for k in range(cols - 1):
                 p3 = matrix_dem[j][k]
