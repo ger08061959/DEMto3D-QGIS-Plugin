@@ -35,8 +35,8 @@ class Ui_SelectLayer_dialog_base(object):
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(SelectLayer_dialog_base)
-        self.buttonBox.accepted().connect(SelectLayer_dialog_base.accept)
-        self.buttonBox.rejected().connect(SelectLayer_dialog_base.reject)
+        self.buttonBox.accepted.connect(SelectLayer_dialog_base.accept)
+        self.buttonBox.rejected.connect(SelectLayer_dialog_base.reject)
         QtCore.QMetaObject.connectSlotsByName(SelectLayer_dialog_base)
         SelectLayer_dialog_base.setTabOrder(self.label, self.LayerList)
         SelectLayer_dialog_base.setTabOrder(self.LayerList, self.buttonBox)
