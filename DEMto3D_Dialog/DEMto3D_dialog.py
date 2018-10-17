@@ -289,7 +289,7 @@ class DEMto3DDialog(QDialog, Ui_DEMto3DDialogBase):
         roi = QgsRectangle(self.roi_x_min, self.roi_y_min, self.roi_x_max, self.roi_y_max)
         source = self.map_crs
         target = self.layer.crs()
-        transform = QgsCoordinateTransform(source, target, QgsProject.instance(self))
+        transform = QgsCoordinateTransform(source, target, QgsProject.instance())
         rec = transform.transform(roi)
 
         x_max = rec.xMaximum()
