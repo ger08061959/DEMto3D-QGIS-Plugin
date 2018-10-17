@@ -30,7 +30,7 @@ import copy
 
 from qgis.PyQt.QtCore import QThread
 from qgis.PyQt.QtWidgets import QApplication
-from qgis._core import QgsPoint, QgsCoordinateTransform
+from qgis.core import QgsPoint, QgsCoordinateTransform
 import math
 from osgeo import gdal
 import struct
@@ -88,7 +88,7 @@ class Model(QThread):
 
         var_y = height
         for i in range(row_stl):
-            self.updateProgress.emit()
+            self.updateProgress().emit()
             QApplication.processEvents()
             var_x = 0
             for j in range(col_stl):
