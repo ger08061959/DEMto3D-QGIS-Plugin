@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/plugins/DEMto3D" >
+    <qresource prefix="/icons" >
         <file>icons/downright.png</file>
         <file>icons/upleft.png</file>
         <file>icons/cursor_extension.png</file>
