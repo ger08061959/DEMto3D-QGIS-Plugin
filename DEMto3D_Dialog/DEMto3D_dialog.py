@@ -27,7 +27,6 @@ from __future__ import absolute_import
 from builtins import str
 import math
 
-from PyQt5 import QtCore
 from PyQt5.QtWidgets import QDialog, QMessageBox, QFileDialog, QApplication
 from PyQt5.QtGui import QColor, QCursor
 from PyQt5.QtCore import Qt
@@ -153,7 +152,7 @@ class DEMto3DDialog(QDialog, Ui_DEMto3DDialogBase):
     def get_layer(self, layer_name):
         if self.layer.name() != layer_name:
             self.ini_dialog()
-        layermap = self.mapLayers()
+        layermap = QgsProject.instance().mapLayers()
         for name, layer in list(layermap.items()):
             if layer.name() == layer_name:
                 if layer.isValid():
