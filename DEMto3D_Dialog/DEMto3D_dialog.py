@@ -27,8 +27,9 @@ from __future__ import absolute_import
 from builtins import str
 import math
 
-from PyQt5 import QtCore, QtGui
-from PyQt5.QtGui import QDialog, QMessageBox, QColor, QFileDialog, QApplication, QCursor
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QDialog, QMessageBox, QFileDialog, QApplication
+from PyQt5.QtGui import QColor, QCursor
 from PyQt5.QtCore import Qt
 from qgis.gui import QgsRubberBand, QgsMapTool, QgsMessageBar
 from osgeo import gdal
@@ -37,7 +38,7 @@ import struct
 from . import Export_dialog
 from . import SelectLayer_dialog
 from .DEMto3D_dialog_base import Ui_DEMto3DDialogBase
-from qgis._core import QgsPoint, QgsRectangle, QgsProject, QgsGeometry, QgsCoordinateTransform, QgsUnitTypes
+from qgis.core import QgsPoint, QgsRectangle, QgsProject, QgsGeometry, QgsCoordinateTransform, QgsUnitTypes
 
 
 def get_layer(layer_name):
@@ -50,7 +51,7 @@ def get_layer(layer_name):
                 return None
 
 
-class DEMto3DDialog(QtGui.QDialog, Ui_DEMto3DDialogBase):
+class DEMto3DDialog(QDialog, Ui_DEMto3DDialogBase):
     # Layer to print
     layer = None
     ''' Region of interest properties '''
@@ -152,7 +153,7 @@ class DEMto3DDialog(QtGui.QDialog, Ui_DEMto3DDialogBase):
     def get_layer(self, layer_name):
         if self.layer.name() != layer_name:
             self.ini_dialog()
-        layermap = QgsProject.instance().mapLayers()
+        layermap = self.mapLayers()
         for name, layer in list(layermap.items()):
             if layer.name() == layer_name:
                 if layer.isValid():
@@ -289,7 +290,7 @@ class DEMto3DDialog(QtGui.QDialog, Ui_DEMto3DDialogBase):
         roi = QgsRectangle(self.roi_x_min, self.roi_y_min, self.roi_x_max, self.roi_y_max)
         source = self.map_crs
         target = self.layer.crs()
-        transform = QgsCoordinateTransform(source, target, QgsProject.instance())
+        transform = QgsCoordinateTransform(source, target, QgsProject.instance(self))
         rec = transform.transform(roi)
 
         x_max = rec.xMaximum()
@@ -562,4 +563,5 @@ class RectangleMapTool(QgsMapTool):
 
     def deactivate(self):
         super(RectangleMapTool, self).deactivate()
-        self.emit(QtCore.SIGNAL("deactivated()"))
+        # self.emit(QtCore.SIGNAL("deactivated()"))
+        self.deactivated().emit()

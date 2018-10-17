@@ -355,5 +355,3 @@ class Ui_DEMto3DDialogBase(object):
         self.RevereseZCheckBox.setText(_translate("DEMto3DDialogBase", "Terrain inversion"))
         self.STLToolButton.setText(_translate("DEMto3DDialogBase", "Export to STL"))
         self.CancelToolButton.setText(_translate("DEMto3DDialogBase", "Cancel"))
-
-import resources_rc

@@ -10,7 +10,7 @@
         git sha              : $Format:%H$
         copyright            : (C) 2015 by Francisco Javier Venceslá Simón
         email                : demto3d@gmail.com
-        modifications        : Ger Groeneveld, Qt >=5.10 and Python >= 3.6
+        modifications        : Ger Groeneveld, Qt >=5.9 and Python >= 3.6
         email                : gergroeneveld@gmail.com
  ***************************************************************************/
 
@@ -34,12 +34,6 @@ from qgis._core import QgsPoint, QgsCoordinateTransform
 import math
 from osgeo import gdal
 import struct
-
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
 
 
 class Model(QThread):
@@ -72,7 +66,7 @@ class Model(QThread):
                                                 self.parameters["z_scale"], self.parameters["projected"])
         if self.parameters["z_inv"]:
             self.matrix_dem = self.matrix_dem_inverse_build(self.matrix_dem)
-        dem_dataset = None
+        # dem_dataset = None
 
     def matrix_dem_build(self, dem_dataset, height, width, scale, spacing_mm,
                          roi_x_max, roi_x_min, roi_y_min, h_base, z_scale, projected):
@@ -86,8 +80,7 @@ class Model(QThread):
         dem_y_min = dem_y_max + dem_row * geotransform[5]
         dem_x_max = dem_x_min + dem_col * geotransform[1]
 
-        if not projected:
-            spacing_deg = spacing_mm * (roi_x_max - roi_x_min) / width
+        spacing_deg = spacing_mm * (roi_x_max - roi_x_min) / width
 
         row_stl = int(math.ceil(height / spacing_mm) + 1)
         col_stl = int(math.ceil(width / spacing_mm) + 1)

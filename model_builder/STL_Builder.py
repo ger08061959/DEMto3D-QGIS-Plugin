@@ -27,22 +27,15 @@ from builtins import str
 from builtins import range
 import collections
 
-from qgis.PyQt import QtCore
-from qgis.PyQt.QtCore import QThread
+from qgis.PyQt.QtCore import QThread, pyqtSignal
 import math
-
-try:
-    _fromUtf8 = QtCore.QString.fromUtf8
-except AttributeError:
-    def _fromUtf8(s):
-        return s
 
 
 class STL(QThread):
     """Class where is built the stl file from the mesh point that decribe the model surface"""
     normal = collections.namedtuple('normal', 'normal_x normal_y normal_z')
     pto = collections.namedtuple('pto', 'x y z')
-    updateProgress = QtCore.pyqtSignal()
+    updateProgress = pyqtSignal()
 
     def __init__(self, bar, label, button, parameters, stl_file, dem_matrix):
         QThread.__init__(self)
@@ -55,6 +48,8 @@ class STL(QThread):
 
         self.quit = False
         self.button.clicked.connect(self.cancel)
+
+        self.updateProgress.connect(self.emit)
 
     def run(self):
         print('STL filename: ',self.stl_file)

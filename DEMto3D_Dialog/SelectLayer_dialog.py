@@ -22,16 +22,19 @@
 """
 from __future__ import absolute_import
 
-from qgis.PyQt import QtCore
-from qgis.PyQt import QtGui
 from qgis.PyQt.QtCore import Qt
 from qgis.PyQt.QtWidgets import QDialog, QListWidgetItem
 from .SelectLayer_dialog_base import Ui_SelectLayer_dialog_base
 
+""" 
+a. Never used; 
+b. QString is not contained in QtCore. 
+c. QStrings are UTF8, lambda expression doesn't change a thing
 try:
-    _fromUtf8 = QtCore.QString.fromUtf8
+    _fromUtf8 = QtCore.QString().fromUtf8
 except AttributeError:
     _fromUtf8 = lambda s: s
+"""
 
 
 class Dialog(QDialog, Ui_SelectLayer_dialog_base):

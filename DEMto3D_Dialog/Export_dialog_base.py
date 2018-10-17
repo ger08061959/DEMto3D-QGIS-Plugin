@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_ExportDialogBase(object):
     def setupUi(self, ExportDialogBase):
         ExportDialogBase.setObjectName("ExportDialogBase")
@@ -40,5 +41,3 @@ class Ui_ExportDialogBase(object):
         _translate = QtCore.QCoreApplication.translate
         ExportDialogBase.setWindowTitle(_translate("ExportDialogBase", "DEMto3D"))
         self.cancelButton.setText(_translate("ExportDialogBase", "Cancel"))
-
-import resources_rc

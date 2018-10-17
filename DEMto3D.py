@@ -23,9 +23,9 @@
 from __future__ import absolute_import
 from builtins import object
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
-from PyQt5.QtGui import QAction, QIcon, QMessageBox
-# Initialize Qt resources from file resources.py
-from . import resources_rc
+from PyQt5.QtWidgets import QAction, QMessageBox
+from PyQt5.Qt import QIcon
+
 # Import the code for the dialog
 from .DEMto3D_Dialog import DEMto3D_dialog
 import os.path
@@ -89,7 +89,7 @@ class DEMto3D(object):
         self.action = QAction(icon, text, parent)
         self.action.setObjectName(text)
         self.action.setStatusTip(text)
-        self.action.triggered.connect(self.run)
+        self.action.triggered().connect(self.run)
 
         self.iface.addRasterToolBarIcon(self.action)
         self.iface.addPluginToRasterMenu(self.menu, self.action)

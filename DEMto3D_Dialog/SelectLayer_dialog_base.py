@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_SelectLayer_dialog_base(object):
     def setupUi(self, SelectLayer_dialog_base):
         SelectLayer_dialog_base.setObjectName("SelectLayer_dialog_base")
@@ -29,13 +30,13 @@ class Ui_SelectLayer_dialog_base(object):
         self.buttonBox.setFocusPolicy(QtCore.Qt.StrongFocus)
         self.buttonBox.setLocale(QtCore.QLocale(QtCore.QLocale.English, QtCore.QLocale.UnitedStates))
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
+        self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel | QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.verticalLayout.addWidget(self.buttonBox)
 
         self.retranslateUi(SelectLayer_dialog_base)
-        self.buttonBox.accepted.connect(SelectLayer_dialog_base.accept)
-        self.buttonBox.rejected.connect(SelectLayer_dialog_base.reject)
+        self.buttonBox.accepted().connect(SelectLayer_dialog_base.accept)
+        self.buttonBox.rejected().connect(SelectLayer_dialog_base.reject)
         QtCore.QMetaObject.connectSlotsByName(SelectLayer_dialog_base)
         SelectLayer_dialog_base.setTabOrder(self.label, self.LayerList)
         SelectLayer_dialog_base.setTabOrder(self.LayerList, self.buttonBox)
@@ -44,6 +45,4 @@ class Ui_SelectLayer_dialog_base(object):
         _translate = QtCore.QCoreApplication.translate
         SelectLayer_dialog_base.setWindowTitle(_translate("SelectLayer_dialog_base", "Layer extent"))
         self.label.setText(_translate("SelectLayer_dialog_base", "Select a layer:"))
-
-import resources_rc
 
