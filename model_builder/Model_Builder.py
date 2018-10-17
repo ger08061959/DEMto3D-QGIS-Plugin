@@ -58,6 +58,9 @@ class Model(QThread):
         QApplication.processEvents()
 
         dem_dataset = gdal.Open(self.parameters["layer"])
+
+        print("Height,Width,Scale"+str(self.parameters["height"])+","+str(self.parameters["width"]))
+
         self.matrix_dem = self.matrix_dem_build(dem_dataset, self.parameters["height"], self.parameters["width"],
                                                 self.parameters["scale"], self.parameters["spacing_mm"],
                                                 self.parameters["roi_x_max"], self.parameters["roi_x_min"],
