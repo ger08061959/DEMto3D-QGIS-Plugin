@@ -39,7 +39,6 @@ class Dialog(QDialog, Ui_ExportDialogBase):
         QDialog.__init__(self)
         self.ui = Ui_ExportDialogBase()
         self.ui.setupUi(self)
-        self.ui.progressBarConnect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
         self.parameters = parameters
 
         self.stl_file = file_name
@@ -50,7 +49,7 @@ class Dialog(QDialog, Ui_ExportDialogBase):
         self.ui.ProgressLabel.setText(self.tr("Building STL geometry ..."))
         self.ui.progressBar.setValue(0)
         self.Model = Model(self.ui.progressBar, self.ui.ProgressLabel, self.ui.cancelButton, self.parameters)
-        # self.Model.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
+        self.Model.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
         self.Model.finished().connect(self.do_stl_model)
         self.Model.start()
 
@@ -63,7 +62,7 @@ class Dialog(QDialog, Ui_ExportDialogBase):
             dem_matrix = self.Model.get_model()
             self.STL = STL(self.ui.progressBar, self.ui.ProgressLabel, self.ui.cancelButton, self.parameters,
                            self.stl_file, dem_matrix)
-            # self.STL.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
+            self.STL.updateProgress.connect(lambda: self.ui.progressBar.setValue(self.ui.progressBar.value() + 1))
             self.STL.finished().connect(self.finish_model)
             self.STL.start()
 

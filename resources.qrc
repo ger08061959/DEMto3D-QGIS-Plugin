@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/icons" >
+    <qresource>
         <file>icons/downright.png</file>
         <file>icons/upleft.png</file>
         <file>icons/cursor_extension.png</file>
