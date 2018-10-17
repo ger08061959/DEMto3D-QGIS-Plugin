@@ -38,7 +38,7 @@ import struct
 class Model(QThread):
     """Class where is built the mesh point that describe the surface model """
     pto = collections.namedtuple('pto', 'x y z')
-    updateProgress = pyqtSignal(int)
+    updateProgress = pyqtSignal()
 
     def __init__(self, bar, label, button, parameters):
         QThread.__init__(self)
@@ -58,9 +58,6 @@ class Model(QThread):
         QApplication.processEvents()
 
         dem_dataset = gdal.Open(self.parameters["layer"])
-
-        print("Height,Width,Scale"+str(self.parameters["height"])+","+str(self.parameters["width"]))
-
         self.matrix_dem = self.matrix_dem_build(dem_dataset, self.parameters["height"], self.parameters["width"],
                                                 self.parameters["scale"], self.parameters["spacing_mm"],
                                                 self.parameters["roi_x_max"], self.parameters["roi_x_min"],
@@ -69,7 +66,6 @@ class Model(QThread):
 
         if self.parameters["z_inv"]:
             self.matrix_dem = self.matrix_dem_inverse_build(self.matrix_dem)
-        dem_dataset = None
 
     def matrix_dem_build(self, dem_dataset, height, width, scale, spacing_mm,
                          roi_x_max, roi_x_min, roi_y_min, h_base, z_scale, projected):
@@ -77,8 +73,6 @@ class Model(QThread):
         # Calculate DEM parameters
         dem_col = dem_dataset.RasterXSize
         dem_row = dem_dataset.RasterYSize
-
-        print("matrix_dem "+str(dem_col)+","+str(dem_row))
 
         geotransform = dem_dataset.GetGeoTransform()
         dem_x_min = geotransform[0]
@@ -94,7 +88,7 @@ class Model(QThread):
 
         var_y = height
         for i in range(row_stl):
-            # self.updateProgress.emit()
+            self.updateProgress.emit()
             QApplication.processEvents()
             var_x = 0
             for j in range(col_stl):

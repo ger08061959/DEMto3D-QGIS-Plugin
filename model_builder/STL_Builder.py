@@ -50,7 +50,6 @@ class STL(QThread):
         self.button.clicked.connect(self.cancel)
 
     def run(self):
-        print('STL filename: ',self.stl_file)
         f = open(self.stl_file, "w")
         f.write("solid model\n")
 
