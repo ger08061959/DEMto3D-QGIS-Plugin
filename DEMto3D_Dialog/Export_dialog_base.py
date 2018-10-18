@@ -25,9 +25,11 @@ class Ui_ExportDialogBase(object):
         self.ProgressLabel.setText("")
         self.ProgressLabel.setObjectName("ProgressLabel")
         self.verticalLayout.addWidget(self.ProgressLabel)
+
         self.progressBar = QtWidgets.QProgressBar(ExportDialogBase)
         self.progressBar.setObjectName("progressBar")
         self.verticalLayout.addWidget(self.progressBar)
+
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.cancelButton = QtWidgets.QToolButton(ExportDialogBase)
