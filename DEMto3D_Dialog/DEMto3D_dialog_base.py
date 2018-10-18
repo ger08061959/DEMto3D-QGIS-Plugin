@@ -23,7 +23,7 @@ class Ui_DEMto3DDialogBase(object):
 
         # icon = QtGui.QIcon(":/demto3d.png")
         # icon.addPixmap(QtGui.QPixmap(":/icons/demto3d.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        DEMto3DDialogBase.setWindowIcon(QtGui.QIcon(self.getIconPath("/icons/demto3d.png")))
+        DEMto3DDialogBase.setWindowIcon(QtGui.QIcon(self.getIconPath("/demto3d.png")))
 
         self.verticalLayout = QtWidgets.QVBoxLayout(DEMto3DDialogBase)
         self.verticalLayout.setObjectName("verticalLayout")
