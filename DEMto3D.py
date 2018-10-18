@@ -25,7 +25,6 @@ from builtins import object
 from PyQt5.QtCore import QSettings, QTranslator, qVersion, QCoreApplication
 from PyQt5.QtWidgets import QAction, QMessageBox
 from PyQt5.Qt import QIcon
-
 # Import the code for the dialog
 from .DEMto3D_Dialog import DEMto3D_dialog
 import os.path
@@ -83,7 +82,7 @@ class DEMto3D(object):
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
-        icon = QIcon(":/plugins/DEMto3D/icons/demto3d.png")
+        icon = QIcon(":/plugins/DEMto3D-QGIS-Plugin-master/icons/demto3d.png")
         text = self.tr("DEM 3D printing")
         parent = self.iface.mainWindow()
         self.action = QAction(icon, text, parent)
