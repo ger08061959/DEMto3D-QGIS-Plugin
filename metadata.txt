@@ -21,6 +21,7 @@ email=demto3d@gmail.com
 
 # Uncomment the following line and add your changelog:
 # changelog=Added cancel button to stop the model building process. Changed the access to read heights (band.ReadAsArray for band.ReadRaster). 
+changelog=Update for use with QGIS versions >= 3.0.0. Tested with 3.2.3 and 3.3.0 (master), Python 3.6/Ubuntu 18.04.1, version Forked from original, available on GitHub
 
 # Tags are comma separated with spaces allowed
 tags=dem, 3D printing, raster, 3D, relief terrain, STL
