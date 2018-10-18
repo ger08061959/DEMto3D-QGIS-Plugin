@@ -1,11 +1,11 @@
 <RCC>
     <qresource>
-        <file alias="downright.png">../icons/downright.png</file>
-        <file alias="upleft.png">../icons/upleft.png</file>
-        <file alias="cursor_extension.png">../icons/cursor_extension.png</file>
-        <file alias="layer_extension.png">../icons/layer_extension.png</file>
-        <file alias="full_extension.png">../icons/full_extension.png</file>
-        <file alias="tool.png">../icons/tool.png</file>
-        <file alias="demto3d.png">../icons/demto3d.png</file>
+        <file alias="downright.png">DEMto3D-QGIS-Plugin/icons/downright.png</file>
+        <file alias="upleft.png">DEMto3D-QGIS-Plugin/icons/upleft.png</file>
+        <file alias="cursor_extension.png">DEMto3D-QGIS-Plugin/icons/cursor_extension.png</file>
+        <file alias="layer_extension.png">DEMto3D-QGIS-Plugin/icons/layer_extension.png</file>
+        <file alias="full_extension.png">DEMto3D-QGIS-Plugin/icons/full_extension.png</file>
+        <file alias="tool.png">DEMto3D-QGIS-Plugin/icons/tool.png</file>
+        <file alias="demto3d.png">DEMto3D-QGIS-Plugin/icons/demto3d.png</file>
     </qresource>
 </RCC>
