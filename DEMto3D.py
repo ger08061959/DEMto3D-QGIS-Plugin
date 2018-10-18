@@ -82,7 +82,7 @@ class DEMto3D(object):
 
     def initGui(self):
         """Create the menu entries and toolbar icons inside the QGIS GUI."""
-        icon = QIcon("/home/ger/.local/share/QGIS/QGIS3/profiles/Ger/python/plugins/DEMto3D-QGIS-Plugin-master/icons/demto3d.png")
+        icon = QIcon("~/.local/share/QGIS/QGIS3/profiles/Ger/python/plugins/DEMto3D-QGIS-Plugin-master/icons/demto3d.png")
         text = self.tr("DEM 3D printing")
         parent = self.iface.mainWindow()
         self.action = QAction(icon, text, parent)
