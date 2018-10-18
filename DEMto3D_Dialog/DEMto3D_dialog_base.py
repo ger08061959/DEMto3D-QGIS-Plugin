@@ -8,6 +8,7 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 class Ui_DEMto3DDialogBase(object):
     def setupUi(self, DEMto3DDialogBase):
         DEMto3DDialogBase.setObjectName("DEMto3DDialogBase")
