@@ -16,7 +16,7 @@ class Ui_ExportDialogBase(object):
         ExportDialogBase.resize(417, 91)
 
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(":/demto3d.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("/home/ger/.local/share/QGIS/QGIS3/profiles/Ger/python/plugins/DEMto3D-QGIS-Plugin-master/icons/demto3d.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         ExportDialogBase.setWindowIcon(icon)
 
         self.verticalLayout = QtWidgets.QVBoxLayout(ExportDialogBase)
