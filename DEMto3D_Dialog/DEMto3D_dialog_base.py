@@ -46,7 +46,7 @@ class Ui_DEMto3DDialogBase(object):
         self.label = QtWidgets.QLabel(self.groupBox_2)
         self.label.setMinimumSize(QtCore.QSize(0, 25))
         self.label.setMaximumSize(QtCore.QSize(16777215, 25))
-        self.label.setPixmap(QtGui.QPixmap(":/plugins/DEMto3D/icons/upleft.png"))
+        self.label.setPixmap(QtGui.QPixmap(":/upleft.png"))
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
@@ -67,7 +67,7 @@ class Ui_DEMto3DDialogBase(object):
 
         self.label_4 = QtWidgets.QLabel(self.groupBox_2)
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap(":/plugins/DEMto3D/icons/downright.png"))
+        self.label_4.setPixmap(QtGui.QPixmap(":/downright.png"))
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 1, 0, 1, 1)
         self.label_5 = QtWidgets.QLabel(self.groupBox_2)
