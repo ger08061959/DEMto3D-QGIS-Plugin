@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_DEMto3DDialogBase(object):
+
     def getIconPath(self, iconfile):
         root = QtCore.QFileInfo()
         path = root.absolutePath() + iconfile
@@ -21,7 +22,7 @@ class Ui_DEMto3DDialogBase(object):
         DEMto3DDialogBase.setWindowModality(QtCore.Qt.WindowModal)
         DEMto3DDialogBase.resize(639, 740)
 
-        # icon = QtGui.QIcon(":/demto3d.png")
+        # icon = QtGui.QIcon()
         # icon.addPixmap(QtGui.QPixmap(":/icons/demto3d.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         DEMto3DDialogBase.setWindowIcon(QtGui.QIcon(self.getIconPath("/demto3d.png")))
 
