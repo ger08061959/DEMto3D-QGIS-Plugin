@@ -10,6 +10,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_DEMto3DDialogBase(object):
+    def getIconPath(self, iconfile):
+        root = QtCore.QFileInfo()
+        path = root.absolutePath() + iconfile
+        return path
+
     def setupUi(self, DEMto3DDialogBase):
         DEMto3DDialogBase.setObjectName("DEMto3DDialogBase")
         DEMto3DDialogBase.setWindowModality(QtCore.Qt.WindowModal)
@@ -17,7 +22,7 @@ class Ui_DEMto3DDialogBase(object):
 
         # icon = QtGui.QIcon(":/demto3d.png")
         # icon.addPixmap(QtGui.QPixmap(":/icons/demto3d.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        DEMto3DDialogBase.setWindowIcon(QtGui.QIcon(":/demto3d.png"))
+        DEMto3DDialogBase.setWindowIcon(QtGui.QIcon(self.getIconPath("/icons/demto3d.png")))
 
         self.verticalLayout = QtWidgets.QVBoxLayout(DEMto3DDialogBase)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -47,7 +52,9 @@ class Ui_DEMto3DDialogBase(object):
         self.label = QtWidgets.QLabel(self.groupBox_2)
         self.label.setMinimumSize(QtCore.QSize(0, 25))
         self.label.setMaximumSize(QtCore.QSize(16777215, 25))
+
         self.label.setPixmap(QtGui.QPixmap(":/upleft.png"))
+
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
         self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
@@ -68,7 +75,9 @@ class Ui_DEMto3DDialogBase(object):
 
         self.label_4 = QtWidgets.QLabel(self.groupBox_2)
         self.label_4.setText("")
+
         self.label_4.setPixmap(QtGui.QPixmap(":/downright.png"))
+
         self.label_4.setObjectName("label_4")
         self.gridLayout.addWidget(self.label_4, 1, 0, 1, 1)
         self.label_5 = QtWidgets.QLabel(self.groupBox_2)
@@ -92,18 +101,20 @@ class Ui_DEMto3DDialogBase(object):
         self.FullExtToolButton = QtWidgets.QToolButton(self.groupBox_2)
         self.FullExtToolButton.setMinimumSize(QtCore.QSize(20, 20))
         self.FullExtToolButton.setMaximumSize(QtCore.QSize(20, 20))
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap(":/plugins/DEMto3D-QGIS-Plugins-master/icons/full_extension.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.FullExtToolButton.setIcon(icon1)
+        # icon1 = QtGui.QIcon()
+        # icon1.addPixmap(QtGui.QPixmap(":/full_extension.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.FullExtToolButton.setIcon(QtGui.QIcon(":/full_extension.png"))
+
         self.FullExtToolButton.setObjectName("FullExtToolButton")
         self.horizontalLayout.addWidget(self.FullExtToolButton)
 
         self.LayerExtToolButton = QtWidgets.QToolButton(self.groupBox_2)
         self.LayerExtToolButton.setMinimumSize(QtCore.QSize(20, 20))
         self.LayerExtToolButton.setMaximumSize(QtCore.QSize(20, 20))
-        icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap(":/plugins/DEMto3D-QGIS-Plugins-master/icons/layer_extension.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.LayerExtToolButton.setIcon(icon2)
+        # icon2 = QtGui.QIcon()
+        # icon2.addPixmap(QtGui.QPixmap(":/layer_extension.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.LayerExtToolButton.setIcon(QtGui.QIcon(":/layer_extension.png"))
+
         self.LayerExtToolButton.setObjectName("LayerExtToolButton")
         self.horizontalLayout.addWidget(self.LayerExtToolButton)
 
@@ -111,9 +122,10 @@ class Ui_DEMto3DDialogBase(object):
         self.CustomExtToolButton.setMinimumSize(QtCore.QSize(20, 20))
         self.CustomExtToolButton.setMaximumSize(QtCore.QSize(20, 20))
         self.CustomExtToolButton.setText("")
-        icon3 = QtGui.QIcon()
-        icon3.addPixmap(QtGui.QPixmap(":/plugins/DEMto3D-QGIS-Plugins-master/icons/cursor_extension.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.CustomExtToolButton.setIcon(icon3)
+        # icon3 = QtGui.QIcon()
+        # icon3.addPixmap(QtGui.QPixmap(":/cursor_extension.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.CustomExtToolButton.setIcon(QtGui.QIcon(":/cursor_extension.png"))
+
         self.CustomExtToolButton.setObjectName("CustomExtToolButton")
         self.horizontalLayout.addWidget(self.CustomExtToolButton)
 
