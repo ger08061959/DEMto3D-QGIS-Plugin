@@ -13,6 +13,7 @@ class Ui_DEMto3DDialogBase(object):
     def getIconPath(self, iconfile):
         root = QtCore.QFileInfo()
         path = root.absolutePath() + iconfile
+        print(path)
         return path
 
     def setupUi(self, DEMto3DDialogBase):
