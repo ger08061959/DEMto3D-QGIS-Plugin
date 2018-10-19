@@ -1,5 +1,5 @@
 <RCC>
-    <qresource>
+    <qresource prefix="/plugins/DEMto3D-QGIS-Plugin-master/">
         <file alias="downright.png">icons/downright.png</file>
         <file alias="upleft.png">icons/upleft.png</file>
         <file alias="cursor_extension.png">icons/cursor_extension.png</file>
